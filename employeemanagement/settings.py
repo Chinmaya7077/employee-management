@@ -25,7 +25,6 @@ SECRET_KEY = 'django-insecure-^q#b5x6l7d^j-*#w5-2@tbly0kpgpp+dc5)q*b-bmyrs(f%3a9
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
 ALLOWED_HOSTS = []
 
 
@@ -38,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'employeeapp'
+    'employeeapp',
+
 ]
 
 MIDDLEWARE = [
@@ -98,6 +98,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
     {
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+    
     },
 ]
 
@@ -118,6 +119,24 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
+# Redirect URLs after login and logout
+LOGIN_URL = '/login/' 
+LOGIN_REDIRECT_URL = '/'  # Redirect to the home page or dashboard
+LOGOUT_REDIRECT_URL = '/employeeapp/login/'  # Redirect to the login page
+
+
+
+# Use browser-length sessions
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+
+# Optional: Set session cookie age (default is 2 weeks if not set)
+SESSION_COOKIE_AGE = 3600  # 1 hour in seconds
+
+# Optional: Mark session cookies as secure (only for HTTPS)
+SESSION_COOKIE_SECURE = True
+
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
